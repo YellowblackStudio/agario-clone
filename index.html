@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Canvas agar.io Clone</title>
-	<style type="text/css">
+	<style>
 		body { margin: 0; padding: 0; overflow: hidden; font-family: sans-serif; }
 		#screen { display: none; width: 100%; height: 100%; background-color: #f2fbff; }
 		#menu {
@@ -17,47 +17,32 @@
 			align-items: center;
 		}
 		#menu h1 { margin-bottom: 50px; font-size: 48px; }
-		#menu button {
-			padding: 15px 30px;
-			font-size: 24px;
-			cursor: pointer;
-		}
+		#menu button { padding: 15px 30px; font-size: 24px; cursor: pointer; }
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 
-	<!-- Menu inicial -->
 	<div id="menu">
 		<h1>Agar.io Clone</h1>
 		<button id="startButton">Jogar</button>
 	</div>
 
-	<!-- Canvas do jogo -->
 	<canvas id="screen"></canvas>
 
-	<script type="text/javascript">
+	<script>
 		const menu = document.getElementById('menu');
 		const startButton = document.getElementById('startButton');
 		const canvas = document.getElementById('screen');
 
-		// Quando clicar em jogar
 		startButton.addEventListener('click', () => {
-			menu.style.display = 'none';       // Esconde menu
-			canvas.style.display = 'block';    // Mostra canvas
-
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
-
-			// Aqui chamamos o seu game.js
-			if (typeof initGame === 'function') {
-				initGame(); // seu game.js deve ter essa função
-			}
+			menu.style.display = 'none';       // esconde menu
+			canvas.style.display = 'block';    // mostra canvas
 		});
 	</script>
 
-	<!-- Seu jogo continua sendo carregado normalmente -->
-	<script type="text/javascript" src="game.js"></script>
+	<!-- Mantém seu game.js original do jeito que está -->
+	<script src="game.js"></script>
 
 </body>
 </html>
