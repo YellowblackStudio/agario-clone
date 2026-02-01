@@ -3,46 +3,16 @@
 <head>
 	<meta charset="utf-8">
 	<title>Canvas agar.io Clone</title>
-	<style>
-		body { margin: 0; padding: 0; overflow: hidden; font-family: sans-serif; }
-		#screen { display: none; width: 100%; height: 100%; background-color: #f2fbff; }
-		#menu {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			background-color: #a0e0ff;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
-		#menu h1 { margin-bottom: 50px; font-size: 48px; }
-		#menu button { padding: 15px 30px; font-size: 24px; cursor: pointer; }
+	<style type="text/css">
+		body { margin: 0; padding: 0; overflow: hidden; }
+		#screen { width: 100%; height: 100%; background-color: #f2fbff; }
 	</style>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-
-	<div id="menu">
-		<h1>Agar.io Clone</h1>
-		<button id="startButton">Jogar</button>
-	</div>
-
 	<canvas id="screen"></canvas>
-
-	<script>
-		const menu = document.getElementById('menu');
-		const startButton = document.getElementById('startButton');
-		const canvas = document.getElementById('screen');
-
-		startButton.addEventListener('click', () => {
-			menu.style.display = 'none';       // esconde menu
-			canvas.style.display = 'block';    // mostra canvas
-		});
-	</script>
-
-	<!-- Mantém seu game.js original do jeito que está -->
-	<script src="game.js"></script>
-
+	
+	<script type="text/javascript" src="game.js"></script>
 </body>
 </html>
