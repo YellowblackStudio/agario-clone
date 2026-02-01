@@ -1,77 +1,63 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Canvas Agar.io Clone</title>
-    <style>
-        body { margin: 0; padding: 0; overflow: hidden; font-family: sans-serif; }
-        #screen { display: none; width: 100%; height: 100%; background-color: #f2fbff; }
-        #menu {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #a0e0ff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        #menu h1 { margin-bottom: 50px; }
-        #menu button {
-            padding: 15px 30px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-    </style>
+	<meta charset="utf-8">
+	<title>Canvas agar.io Clone</title>
+	<style type="text/css">
+		body { margin: 0; padding: 0; overflow: hidden; font-family: sans-serif; }
+		#screen { display: none; width: 100%; height: 100%; background-color: #f2fbff; }
+		#menu {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: #a0e0ff;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		#menu h1 { margin-bottom: 50px; font-size: 48px; }
+		#menu button {
+			padding: 15px 30px;
+			font-size: 24px;
+			cursor: pointer;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 
-    <!-- Menu inicial -->
-    <div id="menu">
-        <h1>Agar.io Clone</h1>
-        <button id="startButton">Jogar</button>
-    </div>
+	<!-- Menu inicial -->
+	<div id="menu">
+		<h1>Agar.io Clone</h1>
+		<button id="startButton">Jogar</button>
+	</div>
 
-    <!-- Canvas do jogo -->
-    <canvas id="screen"></canvas>
+	<!-- Canvas do jogo -->
+	<canvas id="screen"></canvas>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>
-        const menu = document.getElementById('menu');
-        const startButton = document.getElementById('startButton');
-        const canvas = document.getElementById('screen');
-        const ctx = canvas.getContext('2d');
+	<script type="text/javascript">
+		const menu = document.getElementById('menu');
+		const startButton = document.getElementById('startButton');
+		const canvas = document.getElementById('screen');
 
-        // Função que inicia o jogo
-        function startGame() {
-            menu.style.display = 'none'; // esconde o menu
-            canvas.style.display = 'block'; // mostra o canvas
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+		// Quando clicar em jogar
+		startButton.addEventListener('click', () => {
+			menu.style.display = 'none';       // Esconde menu
+			canvas.style.display = 'block';    // Mostra canvas
 
-            // Aqui você pode chamar a função do seu game.js para iniciar o jogo
-            initGame(); 
-        }
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
 
-        startButton.addEventListener('click', startGame);
+			// Aqui chamamos o seu game.js
+			if (typeof initGame === 'function') {
+				initGame(); // seu game.js deve ter essa função
+			}
+		});
+	</script>
 
-        // Exemplo simples de função initGame (apenas para testar)
-        function initGame() {
-            // Loop do jogo
-            function loop() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Exemplo: desenhar uma bolinha
-                ctx.fillStyle = 'red';
-                ctx.beginPath();
-                ctx.arc(canvas.width/2, canvas.height/2, 50, 0, Math.PI*2);
-                ctx.fill();
-
-                requestAnimationFrame(loop);
-            }
-            loop();
-        }
-    </script>
+	<!-- Seu jogo continua sendo carregado normalmente -->
+	<script type="text/javascript" src="game.js"></script>
 
 </body>
 </html>
