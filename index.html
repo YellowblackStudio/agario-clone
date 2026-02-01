@@ -1,18 +1,77 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Canvas agar.io Clone</title>
-	<style type="text/css">
-		body { margin: 0; padding: 0; overflow: hidden; }
-		#screen { width: 100%; height: 100%; background-color: #f2fbff; }
-	</style>
-	
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>Canvas Agar.io Clone</title>
+    <style>
+        body { margin: 0; padding: 0; overflow: hidden; font-family: sans-serif; }
+        #screen { display: none; width: 100%; height: 100%; background-color: #f2fbff; }
+        #menu {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #a0e0ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #menu h1 { margin-bottom: 50px; }
+        #menu button {
+            padding: 15px 30px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-	<canvas id="screen"></canvas>
-	
-	<script type="text/javascript" src="game.js"></script>
+
+    <!-- Menu inicial -->
+    <div id="menu">
+        <h1>Agar.io Clone</h1>
+        <button id="startButton">Jogar</button>
+    </div>
+
+    <!-- Canvas do jogo -->
+    <canvas id="screen"></canvas>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        const menu = document.getElementById('menu');
+        const startButton = document.getElementById('startButton');
+        const canvas = document.getElementById('screen');
+        const ctx = canvas.getContext('2d');
+
+        // Função que inicia o jogo
+        function startGame() {
+            menu.style.display = 'none'; // esconde o menu
+            canvas.style.display = 'block'; // mostra o canvas
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            // Aqui você pode chamar a função do seu game.js para iniciar o jogo
+            initGame(); 
+        }
+
+        startButton.addEventListener('click', startGame);
+
+        // Exemplo simples de função initGame (apenas para testar)
+        function initGame() {
+            // Loop do jogo
+            function loop() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Exemplo: desenhar uma bolinha
+                ctx.fillStyle = 'red';
+                ctx.beginPath();
+                ctx.arc(canvas.width/2, canvas.height/2, 50, 0, Math.PI*2);
+                ctx.fill();
+
+                requestAnimationFrame(loop);
+            }
+            loop();
+        }
+    </script>
+
 </body>
 </html>
